@@ -56,9 +56,9 @@ class DishController(object):
         if len(list(rel_match)) == 0:
             rel_match = Relationship(node1, relation_name, node2)
             self.graph.create(rel_match)
-        for key, value in attribute.items():
-            rel_match[key] = value
-        self.graph.push(rel_match)
+            for key, value in attribute.items():
+                rel_match[key] = value
+            self.graph.push(rel_match)
         return rel_match
 
 if __name__ == "__main__":
