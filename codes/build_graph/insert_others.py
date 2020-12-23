@@ -14,6 +14,7 @@ from codes.build_graph.config import OTHERS, CAIXI, KOUWEI, CAIPINLEI, RENQUN, G
 def insert_others():
     dish_controller = DishController(DISH_URL, DISH_USER, DISH_PASSWORD, DISH_BOLT_PORT)
 
+    # 按照字典的方式遍历并将节点插入图数据库
     for key, value in OTHERS.items():
         for node_name in value:
             node = dish_controller.insertNode(key, {"名称": node_name})

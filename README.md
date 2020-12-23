@@ -1,3 +1,19 @@
+## 代码结构
+
+菜品知识图谱的构建代码在目录`./codes/build_graph`中，主要有四个需要执行的文件，进入该目录执行即可。
+
+- `./code/build_graph/requirements.txt`：依赖文件，在目录中执行`pip install -r requirements.txt`即可安装所需依赖，环境为`python3`
+
+- `./codes/build_graph/insert_shicai.py`：将食材和食材类导入图数据库
+- `./codes/build_graph/insert_caipin.py`：将菜品和相关关系导入图数据库，数据量十分大，耗时大概一个多星期
+
+- `./codes/build_graph/insert_others.py`：将其他实体类导入数据库
+
+需要注意的地方：
+
+- 在执行`insert_caipin.py`前需要将原始菜品数据压缩文件`processing.zip`和`processing.zip`解压缩并放入`./data/caipin/`目录中。
+- 菜品图数据库放在学校的服务器上，地址和密码在`./config/readme.txt`文件中，可以登录该地址查看数据库。
+
 ## 菜品知识图谱模式层
 
 ### 实体类

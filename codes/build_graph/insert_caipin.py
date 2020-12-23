@@ -58,6 +58,7 @@ def insert_caipin():
                 caipin_rela = copy.copy(CAIPIN_RELAS[key])
                 value = re.split(" +", line[1].strip())
                 if key == "原材料":
+                    # 插入食材和菜品的关系
                     if len(value) % 2 != 0: continue
                     for i in range(0, len(value), 2):
                         caipin_rela[1]["用量"] = value[i+1].strip()
@@ -65,13 +66,14 @@ def insert_caipin():
                 elif key == "适用人群":
                     pass
                 elif key == "所属分类":
+                    # 插入菜品和所属类别的关系
                     for item in value:
                         tmp = item.strip()
                         if tmp == "": continue
                         if tmp not in CAIPINLEI: continue
-                        dish_controller.insertRelation(caipin_rela[0], "菜品", caipin_rela[2], caipin_attr["名称"], tmp, caipin_rela[1])
-                        
+                        dish_controller.insertRelation(caipin_rela[0], "菜品", caipin_rela[2], caipin_attr["名称"], tmp, caipin_rela[1])            
                 else:
+                    # 插入其他在文档中出现的关系
                     for item in value:
                         if item.strip() == "": continue
                         dish_controller.insertRelation(caipin_rela[0], "菜品", caipin_rela[2], caipin_attr["名称"], item.strip(), caipin_rela[1])
